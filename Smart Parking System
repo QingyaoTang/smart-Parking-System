@@ -1,0 +1,68 @@
+const int trigPin = A1;
+const int echoPin = A0;
+const int analogInPin = A2;
+const int buzzerPin = 2;
+bool fly = false;
+int count = 0;
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  //playMerryChristmas();
+}
+void playMerryChristmas() {
+  int melody[] = {262, 294, 330, 262, 262, 294, 330, 262, 330, 349, 392, 392, 349, 330, 262, 262, 294, 330, 262, 262, 294, 330, 262, 330, 349, 392, 392, 349, 330, 262, 330, 262, 220, 262, 262, 330, 392, 392, 349, 330, 262, 330, 262, 220, 262, 220, 196, 262, 262, 294, 330, 262, 262, 294, 330, 262, 330, 349, 392, 392, 349, 330, 262, 262, 294, 330, 262, 262, 294, 330, 262, 330, 349, 392, 392, 349, 330, 262, 330, 262, 220, 262, 262, 330, 392, 392, 349, 330, 262, 330, 262, 220, 262, 220, 196};
+  int noteDuration = 400; 
+
+  for (int i = 0; i < sizeof(melody) / sizeof(melody[0]); i++) {
+    tone(buzzerPin, melody[i], noteDuration);
+    delay(noteDuration);
+  }
+
+  noTone(buzzerPin); digitalWrite(buzzerPin, LOW);
+}
+void loop() {
+  int sensorValue = analogRead(analogInPin);
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duration = pulseIn(echoPin, HIGH);
+  int distance = duration * 0.034 / 2;
+  Serial.print("Voltage: "); 
+  Serial.print(sensorValue); 
+  Serial.print(" V");
+  Serial.print("\tDistance: ");
+  Serial.print(distance);
+  Serial.print(" cm\t");
+  if(sensorValue<60 && distance<10){
+    Serial.println("1\t");
+      fly = true;
+      count++;
+    }
+    if(sensorValue>500 && distance>40){
+ Serial.println("2\t");
+      fly = false;
+      count=0;
+      delay(3000);
+    }
+  if(distance<=45 && sensorValue >500){
+    Serial.println("3");
+    digitalWrite(buzzerPin, LOW);
+delay(200);
+digitalWrite(buzzerPin, HIGH);
+delay(500);
+digitalWrite(buzzerPin, LOW);
+delay(500);
+digitalWrite(buzzerPin, HIGH);
+delay(200);
+digitalWrite(buzzerPin, LOW);
+  }
+  if(fly == true && count<=1){
+    Serial.println("4");
+    playMerryChristmas() ;
+  }
+  delay(500);
+}
