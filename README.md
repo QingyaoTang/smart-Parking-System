@@ -8,6 +8,7 @@ Ultrasonic distance sensor: Used to measure the exact distance between the vehic
 Buzzer: Sounds, including beeps and music.
 Breadboard: Used for temporary installation and testing of electronic circuits.
 Wooden construction: All electronic components are installed in a wooden model that simulates the parking environment.
+![picture1](https://github.com/QingyaoTang/smart-Parking-System/blob/main/11091702426406_.pic.jpg)
 ## Usage
 The core function of the system is to detect the position of the vehicle through the sensor and make intelligent sound prompts based on the relative position of the vehicle and the parking space. When the vehicle enters the detection range of the sensor but there is still a distance (sensed by the distance sensor), the system will emit a drop sound, indicating that there is a car approaching; When the vehicle enters the parking area correctly, it is sensed by the infrared sensor, and the system switches to play music to show that the parking is successful; When the vehicle pulls out of the parking space, the system emits a beep again, indicating that the driver has left.
 ## Test feedback
