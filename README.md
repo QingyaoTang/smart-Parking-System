@@ -1,6 +1,7 @@
 # smart-Parking-System
 ## Introduction
 Urban parking efficiency is a growing concern, with traditional methods often leading to congestion and increased environmental footprints. This project aims to introduce an automated solution that streamlines parking through technology. The significance of this endeavor lies in its potential to reduce traffic issues and promote sustainable urban planning.The Smart Parking System is conceived with the goal of maximizing parking accuracy and user experience. At its core, the system features two main sensing components: an infrared sensor to detect the presence of a vehicle within a designated threshold, and an ultrasonic distance sensor for precise range measurements. A buzzer is used to provide auditory signals to the driver based on the sensor inputs.
+![picture3](https://github.com/QingyaoTang/smart-Parking-System/blob/main/17531706110626_.pic.jpg)
 ## System components and layout
 Arduino Control Unit: The system uses the Arduino control board as its processing and control center.
 Infrared sensor: Used to detect if the vehicle has entered the boundary of the parking space.
